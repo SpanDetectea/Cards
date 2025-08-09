@@ -1,4 +1,4 @@
-import { getData, onLoadOn } from '../../store/slices/cardSlices'
+import { deleteCard, getData, onLoadOn } from '../../store/slices/cardSlices'
 import { fetchData } from '../../api/fetchData'
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,9 +6,11 @@ import { usePagination } from '../../hooks/usePagination';
 import Pagination from '../Pagination/Pagination';
 import "./Card.css"
 import defaultImage from '../../images/not-found.svg'
+import deleteBasket from '../../images/delete.svg'
 import { getImages } from '../../store/slices/imagesSlices';
 import { fetchImage } from '../../api/fetchImage';
 import { getRandomImage } from '../../utils/getRandomImage';
+import LikeIcon from './LikeIcon/LikeIcon';
 
 const Card = () => {
     const dispatch = useDispatch();
@@ -44,6 +46,9 @@ const Card = () => {
         e.target.src = image;
         e.target.onerror = null;
     }
+    const handleDelete = (id) => {
+        dispatch(deleteCard(id))
+    }
 
     return (
         <>
@@ -60,6 +65,10 @@ const Card = () => {
                             <div className="product-card__content">
                                 <h3 className="product-card__title">{card.title}</h3>
                             </div>
+                            <button className="product-card__basket"
+                                onClick={() => handleDelete(card.id)}
+                            ><img src={deleteBasket} className="product-card__basket__image" /></button>
+                            <LikeIcon id = {card.id}/>
                         </div>
                     );
                 })}

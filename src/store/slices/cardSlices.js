@@ -25,11 +25,15 @@ const cardSlices = createSlice({
         toggleLike(state, action) {
             const id = state.data.findIndex(card => card.id === action.payload)
             state.data[id].like = state.data[id].like ? !state.data[id].like : true;
+        },
+        addNewImage(state, action) {
+             const id = state.data.findIndex(card => card.id === action.payload.id)
+             state.data[id].url = action.payload.image
         }
     },
 });
 
-export const { getData, onLoadOff, onLoadOn, deleteCard, toggleLike } =
+export const { getData, onLoadOff, onLoadOn, deleteCard, toggleLike, addNewImage } =
     cardSlices.actions;
 
 export default cardSlices.reducer;

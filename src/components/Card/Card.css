@@ -13,6 +13,9 @@
     overflow: hidden;
     font-family: Arial, sans-serif;
     background-color: #fff;
+    display: flex;  
+    flex-direction: column;
+    justify-content: space-between
   }
 
   .product-card__image {
@@ -34,6 +37,10 @@
     margin: 0 0 8px;
   }
 
+  .product-card__buttons {
+    display: flex;
+    justify-content: space-evenly;
+  }
   .product-card__basket {
     background: none;
     border: none;

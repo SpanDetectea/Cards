@@ -11,11 +11,11 @@ const Pagination = ({ currentPage, setCurrentPage, totalPages }) => {
                 Назад
             </button>
             <span className="pagination__info">
-                Страница {currentPage} из {totalPages}
+                Страница {totalPages === 0 ? 0: currentPage} из {totalPages}
             </span>
             <button
                 className="pagination__button"
-                disabled={currentPage === totalPages}
+                disabled={currentPage === totalPages || totalPages === 0}
                 onClick={() => setCurrentPage(currentPage + 1)}
             >
                 Вперед

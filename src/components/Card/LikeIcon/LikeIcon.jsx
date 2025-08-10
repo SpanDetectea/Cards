@@ -1,21 +1,19 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toggleLike } from '../../../store/slices/cardSlices';
 
 function LikeIcon({id}) {
-    const [liked, setLiked] = useState(false);
+    const isLiked = useSelector(s => s.cards.data.find(card => card.id === id)?.like)
     const dispatch = useDispatch()
 
     const handleToggleLike = () => {
-        setLiked(!liked)
         dispatch(toggleLike(id))
     }
 
     return (
         <button
             onClick={handleToggleLike}
-            aria-pressed={liked}
-            aria-label={liked ? 'Убрать лайк' : 'Поставить лайк'}
+            aria-pressed={isLiked}
+            aria-label={isLiked ? 'Убрать лайк' : 'Поставить лайк'}
             style={{
                 background: 'none',
                 border: 'none',
@@ -28,7 +26,7 @@ function LikeIcon({id}) {
                 width="24"
                 height="24"
                 viewBox="0 0 24 24"
-                fill={liked ? 'red' : 'none'}
+                fill={isLiked ? 'red' : 'none'}
                 stroke="red"
                 strokeWidth="2"
                 strokeLinecap="round"

@@ -1,70 +1,67 @@
-# Getting Started with Create React App
+# Тестовое задание: SPA со списком карточек
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Описание задачи
 
-## Available Scripts
+Создать одностраничное приложение (SPA) со списком карточек, на каждой из которых отображается картинка и любая информация на ваш выбор, полученная с публичного API.  
+Для выбора API можно использовать любой публичный источник, например, из списка: [Public APIs](https://github.com/public-apis/public-apis).
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## Требования к приложению
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Данные, полученные с API, должны храниться в глобальном сторе (Redux).
+- На каждой карточке должна быть иконка лайка:
+  - При клике на иконку лайка, карточка получает или снимает лайк.
+  - Иконка лайка должна визуально выделяться (подкрашиваться), если карточка залайкана.
+- На каждой карточке должна быть иконка удаления:
+  - При клике на неё карточка удаляется из списка.
+- Над списком должна быть кнопка фильтра:
+  - При включении фильтра показываются только залайканные карточки.
+  - При выключении фильтра отображаются все карточки.
+- Дизайн не является приоритетом, главное — простота и аккуратность интерфейса.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## Используемый стек технологий
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- React или Vue (на ваш выбор)
+- Redux для управления состоянием приложения
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Особенности реализации
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Для загрузки основной информации о карточках используется бесплатный API [JSONPlaceholder Photos](https://jsonplaceholder.typicode.com/photos), который предоставляет данные с названиями и URL картинок.
+- Несмотря на наличие URL изображений в JSONPlaceholder, они оказываются недоступными.
+- Поэтому для отображения картинок в приложении дополнительно используется второй API с набором тестовых изображений:  
+  [https://random-image-pepebigotes.vercel.app/lists/example-images-list.json](https://random-image-pepebigotes.vercel.app/lists/example-images-list.json).  
+  Из этого списка случайным образом выбирается изображение для каждой карточки.
+- Основные данные берутся из JSONPlaceholder, а картинки подставляются из второго API.
+- Все данные объединяются и сохраняются в Redux сторе.
+- Состояния лайков и удаление карточек управляются через Redux.
+- При ошибке загрузки картинки автоматически подставляется резервное изображение из второго API.
+- Реализован фильтр для отображения только залайканных карточек.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Варианты запуска
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 1. Запуск через готовый деплой
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Откройте в браузере по ссылке:  
+[https://spandetectea.github.io/Cards/](https://spandetectea.github.io/Cards/)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 2. Локальный запуск из исходников
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. **Клонировать репозиторий**
+   ```bash
+   git clone https://github.com/SpanDetectea/Cards.git
+   cd god
+2. **Установить зависимости**
+   ```bash
+    npm install
+3. **Запустить в режиме разработки**
+    ```bash
+    npm start
+4. **Открой http://localhost:3000 в браузере.**
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
